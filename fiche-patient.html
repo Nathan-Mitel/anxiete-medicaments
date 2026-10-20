@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche patient — Les médicaments de l'anxiété</title>
+<!--
+  =====================================================================
+  FICHE RÉCAPITULATIVE PATIENTS — "Les médicaments de l'anxiété"
+  Format : A4 recto-verso, à imprimer (Ctrl+P → "Enregistrer en PDF"
+  ou imprimante, marges : aucune, graphiques d'arrière-plan : cochés).
+  Fichier autonome, aucune dépendance externe.
+
+  Règles de rédaction suivies (guides "health literacy") :
+   - phrases courtes, une idée par phrase, vocabulaire courant
+   - 4 à 5 points clés maximum par bloc
+   - consignes concrètes ("je…"), titres sous forme de repères
+   - texte ≥ 16 px (12 pt), beaucoup d'espace blanc
+  Mêmes couleurs que le cours : une couleur = une famille.
+  =====================================================================
+-->
+<style>
+:root{
+  --coral:#D2513F; --navy:#2B3A55; --teal:#0D7F76; --amber:#D27717;
+  --green:#5E8F2B; --plum:#7D4A72; --alert:#C2412F;
+  --ink:#1D2433; --muted:#566070; --line:#E3DFD6; --paper:#FFFFFF;
+  --font:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI Variable Display","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:var(--font);color:var(--ink);background:#E9E6DF;font-size:16px;line-height:1.38}
+b{font-weight:700}
+
+/* ---------- Feuille A4 ---------- */
+@page{size:A4;margin:0}
+.page{width:210mm;height:297mm;margin:10mm auto;padding:10mm 12.5mm 8mm;background:var(--paper);position:relative;overflow:hidden;
+  box-shadow:0 10px 40px -10px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:3.8mm}
+@media print{
+  body{background:none}
+  .page{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+}
+
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- En-tête ---------- */
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:8mm;padding-bottom:4mm;border-bottom:2px solid var(--line)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--c,var(--coral))}
+.kicker::before{content:"";width:22px;height:3px;border-radius:2px;background:currentColor}
+h1{font-size:37px;font-weight:800;letter-spacing:-.035em;line-height:1.02;margin:7px 0 6px}
+h1 em{font-style:normal;color:var(--teal)}
+.lead{font-size:17px;color:var(--muted)}
+.stems{display:flex;align-items:flex-end;gap:11px;height:27mm;padding-right:2mm}
+.stem{display:flex;flex-direction:column;align-items:center;height:var(--h)}
+.stem i{width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-size:16px;flex:none}
+.stem s{flex:1;width:3px;background:var(--c);opacity:.8;border-radius:2px}
+
+/* ---------- Titres de bloc ---------- */
+.bt{display:flex;align-items:center;gap:10px;margin-bottom:3mm}
+.bt .disc{width:34px;height:34px;border-radius:10px;background:var(--c);color:#fff;display:grid;place-items:center;font-size:20px;flex:none}
+.bt h2{font-size:22px;font-weight:780;letter-spacing:-.02em;line-height:1.1}
+.bt h2 span{color:var(--c)}
+
+/* ---------- Les 3 familles ---------- */
+.fams{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.fam{border-radius:14px;overflow:hidden;background:color-mix(in srgb,var(--c) 7%,#fff);border:1.5px solid color-mix(in srgb,var(--c) 22%,#fff)}
+.fam .h{background:var(--c);color:#fff;display:flex;align-items:center;gap:9px;padding:9px 13px;font-size:18px;font-weight:750}
+.fam .h .ico{font-size:21px}
+.fam .b{padding:9px 13px 11px}
+.fam .ex{font-size:15px;color:var(--muted);line-height:1.3}
+.fam .k{font-size:16px;font-weight:650;margin-top:6px;line-height:1.3}
+
+/* ---------- Blocs principaux (benzos, antidépresseurs) ---------- */
+.blk{border-radius:16px;border:1.5px solid var(--line);padding:4mm 5.5mm;position:relative}
+.blk::before{content:"";position:absolute;left:-1.5px;top:14px;bottom:14px;width:6px;border-radius:0 4px 4px 0;background:var(--c)}
+.cols{display:grid;grid-template-columns:1.45fr 1fr;gap:6mm;align-items:start}
+ul.chk{list-style:none;display:flex;flex-direction:column;gap:2.4mm}
+ul.chk li{display:flex;gap:9px;align-items:flex-start}
+ul.chk li .ico{font-size:19px;color:var(--c);margin-top:1px;stroke-width:2.2}
+.side{display:flex;flex-direction:column;gap:3mm}
+
+.big{display:flex;align-items:center;gap:12px;background:color-mix(in srgb,var(--c) 8%,#fff);border-radius:12px;padding:9px 12px}
+.big b{font-size:52px;font-weight:840;letter-spacing:-.05em;line-height:.9;color:var(--c)}
+.big span{font-size:16px;font-weight:650;line-height:1.25}
+.weeks{display:flex;gap:3px;margin-top:6px}.weeks i{flex:1;height:8px;border-radius:2px;background:var(--c)}
+.alertbox{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:9px 12px;
+  background:color-mix(in srgb,var(--alert) 8%,#fff);border:1.5px solid color-mix(in srgb,var(--alert) 28%,#fff);font-size:15.5px;line-height:1.32}
+.alertbox .ico{font-size:24px;color:var(--alert);stroke-width:2}
+.alertbox b{color:var(--alert);display:block;font-size:16px}
+.mini{background:color-mix(in srgb,var(--c) 6%,#fff);border-radius:12px;padding:8px 10px 6px}
+.mini svg{width:100%;display:block}
+.mini .cap{font-size:15px;line-height:1.3;color:var(--ink);margin-top:3px}
+
+/* ---------- Verso ---------- */
+.others{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.oc{display:flex;gap:11px;align-items:flex-start;padding:9px 12px;border-radius:12px;background:color-mix(in srgb,var(--green) 7%,#fff)}
+.oc .disc{width:34px;height:34px;border-radius:10px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:20px;flex:none}
+.oc b{display:block;font-size:17px}
+.oc p{font-size:15.5px;line-height:1.3;color:var(--ink)}
+.oc.warn{background:color-mix(in srgb,var(--alert) 7%,#fff)}
+.oc.warn .tagw{color:var(--alert);font-weight:700}
+
+.banner{display:flex;align-items:center;gap:14px;border-radius:14px;padding:11px 16px;background:var(--navy);color:#fff}
+.banner .ico{font-size:30px;flex:none}
+.banner p{font-size:17px;line-height:1.3}
+.banner b{color:#FFE2B5}
+.duoi{display:flex;align-items:center;gap:4px;flex:none}.duoi em{font-style:normal;font-weight:800;font-size:20px;color:#FFE2B5}.duoi .ico{font-size:26px}
+
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm 5mm}
+.q{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.3}
+.q .box{width:20px;height:20px;border:2px solid var(--plum);border-radius:5px;flex:none;margin-top:1px}
+
+table.mine{width:100%;border-collapse:separate;border-spacing:0;font-size:15px;border:1.5px solid color-mix(in srgb,var(--plum) 35%,#fff);border-radius:12px;overflow:hidden}
+table.mine th{background:color-mix(in srgb,var(--plum) 12%,#fff);color:var(--plum);text-align:left;padding:7px 10px;font-weight:700}
+table.mine td{height:8.6mm;border-top:1px solid color-mix(in srgb,var(--plum) 20%,#fff);border-left:1px solid color-mix(in srgb,var(--plum) 14%,#fff)}
+table.mine td:first-child{border-left:none}
+.lines{margin-top:3mm;font-size:15px;color:var(--muted)}
+.lines i{display:block;height:7.6mm;border-bottom:1.5px dotted #B9B3A8}
+
+.duo{display:grid;grid-template-columns:1.1fr 1fr;gap:5mm}
+.reflex{border-radius:14px;padding:10px 14px;background:color-mix(in srgb,var(--coral) 8%,#fff);border:1.5px solid color-mix(in srgb,var(--coral) 30%,#fff)}
+.reflex ol{list-style:none;display:flex;flex-direction:column;gap:2mm;counter-reset:r}
+.reflex li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.3;counter-increment:r}
+.reflex li::before{content:counter(r);width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center;flex:none}
+.res{display:flex;flex-direction:column;gap:3mm}
+.qr{display:flex;gap:11px;align-items:center}
+.qr svg{width:21mm;height:21mm;flex:none;padding:1.5mm;background:#fff;border:1.5px solid var(--line);border-radius:8px}
+.qr b{display:block;font-size:16px}
+.qr span{font-size:15px;color:var(--muted);line-height:1.3}
+
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);border-top:1.5px solid var(--line);padding-top:2.5mm}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-gelule" viewBox="0 0 24 24"><path d="M10.6 3.9a5 5 0 0 1 7.07 7.07l-6.71 6.71a5 5 0 0 1-7.07-7.07z"/><path d="M7.3 7.3l7 7"/></symbol>
+  <symbol id="i-neurone" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M14.3 9.7l3.2-3.2M9.7 14.3l-3.2 3.2M9.7 9.7L6.5 6.5M14.3 14.3l3.2 3.2"/><circle cx="5.2" cy="5.2" r="1.8"/><circle cx="18.8" cy="5.2" r="1.8"/><circle cx="5.2" cy="18.8" r="1.8"/><circle cx="18.8" cy="18.8" r="1.8"/></symbol>
+  <symbol id="i-couches" viewBox="0 0 24 24"><path d="M12 3l9 4.8-9 4.8-9-4.8z"/><path d="M3 12.2l9 4.8 9-4.8"/><path d="M3 16.4l9 4.8 9-4.8"/></symbol>
+  <symbol id="i-debat" viewBox="0 0 24 24"><path d="M4 4h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-3.5 3v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M18.5 8H20a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1.5v3L15 17h-3a2 2 0 0 1-2-2v-.5"/></symbol>
+  <symbol id="i-arbre" viewBox="0 0 24 24"><rect x="8.5" y="2.5" width="7" height="5" rx="1.2"/><rect x="1.5" y="16.5" width="6" height="5" rx="1.2"/><rect x="9" y="16.5" width="6" height="5" rx="1.2"/><rect x="16.5" y="16.5" width="6" height="5" rx="1.2"/><path d="M12 7.5v9M4.5 16.5V12h15v4.5"/></symbol>
+  <symbol id="i-acteur" viewBox="0 0 24 24"><circle cx="9" cy="7.5" r="4"/><path d="M2 21v-.5A6.5 6.5 0 0 1 8.5 14H10"/><path d="M14.5 18.2l2.3 2.3 4.7-4.7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M7.8 12.3l2.8 2.8 5.6-5.8"/></symbol>
+  <symbol id="i-alerte" viewBox="0 0 24 24"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5M12 17.2v.1"/></symbol>
+  <symbol id="i-horloge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-coeur" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.4A4.9 4.9 0 0 1 12 6.4a4.9 4.9 0 0 1 9.2 4.2C19.5 15.4 12 20 12 20z"/><path d="M3.5 12.5h4l1.5-2.5 2 5 1.5-2.5h8"/></symbol>
+  <symbol id="i-sablier" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v3.5a5 5 0 0 0 2.5 4.3L12 12l2.5 1.2A5 5 0 0 1 17 17.5V21M17 3v3.5a5 5 0 0 1-2.5 4.3L12 12l-2.5 1.2A5 5 0 0 0 7 17.5V21"/></symbol>
+  <symbol id="i-onde" viewBox="0 0 24 24"><path d="M2 12h3l2-6 3 12 3-9 2 5 2-2h5"/></symbol>
+  <symbol id="i-mains" viewBox="0 0 24 24"><path d="M8.5 13.5L12 17l3.5-3.5"/><path d="M3 11l4-4 3 1.5 2-1.5 2 1.5 3-1.5 4 4"/><path d="M5 13l3 3M19 13l-3 3"/><path d="M12 7.5V4"/></symbol>
+</svg>
+
+<!-- ███████████████████████████  RECTO  ███████████████████████████ -->
+<section class="page">
+
+  <header class="top">
+    <div>
+      <span class="kicker">Psychoéducation · Troubles anxieux</span>
+      <h1>Les médicaments<br><em>de l'anxiété</em></h1>
+      <p class="lead">L'essentiel à retenir de la séance, et des outils pour être acteur de son traitement.</p>
+    </div>
+    <!-- rappel visuel du cours : une tige par séquence -->
+    <div class="stems" aria-hidden="true">
+      <div class="stem" style="--c:var(--coral);--h:62%"><i><svg class="ico"><use href="#i-debat"/></svg></i><s></s></div>
+      <div class="stem" style="--c:var(--navy);--h:85%"><i><svg class="ico"><use href="#i-arbre"/></svg></i><s></s></div>
+      <div class="stem" style="--c:var(--teal);--h:52%"><i><svg class="ico"><use href="#i-gelule"/></svg></i><s></s></div>
+      <div class="stem" style="--c:var(--amber);--h:100%"><i><svg class="ico"><use href="#i-neurone"/></svg></i><s></s></div>
+      <div class="stem" style="--c:var(--green);--h:72%"><i><svg class="ico"><use href="#i-couches"/></svg></i><s></s></div>
+      <div class="stem" style="--c:var(--plum);--h:58%"><i><svg class="ico"><use href="#i-acteur"/></svg></i><s></s></div>
+    </div>
+  </header>
+
+  <!-- 1. Les 3 familles -->
+  <div>
+    <div class="bt" style="--c:var(--navy)"><span class="disc"><svg class="ico"><use href="#i-arbre"/></svg></span><h2>Trois grandes familles de traitements</h2></div>
+    <div class="fams">
+      <div class="fam" style="--c:var(--teal)">
+        <div class="h"><svg class="ico"><use href="#i-gelule"/></svg>Anxiolytiques</div>
+        <div class="b"><p class="ex">Benzodiazépines, hydroxyzine, buspirone…</p><p class="k">Ils soulagent vite, pour une durée courte.</p></div>
+      </div>
+      <div class="fam" style="--c:var(--amber)">
+        <div class="h"><svg class="ico"><use href="#i-neurone"/></svg>Antidépresseurs</div>
+        <div class="b"><p class="ex">Sertraline, escitalopram, venlafaxine…</p><p class="k">Un traitement de fond, qui agit en quelques semaines.</p></div>
+      </div>
+      <div class="fam" style="--c:var(--green)">
+        <div class="h"><svg class="ico"><use href="#i-couches"/></svg>Autres</div>
+        <div class="b"><p class="ex">Bêta-bloquants, prégabaline…</p><p class="k">Choisis selon les symptômes et la situation.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Benzodiazépines -->
+  <div class="blk" style="--c:var(--teal)">
+    <div class="bt"><span class="disc"><svg class="ico"><use href="#i-gelule"/></svg></span><h2>Les <span>benzodiazépines</span> : ce que je retiens</h2></div>
+    <div class="cols">
+      <ul class="chk">
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Elles agissent <b>vite</b> : elles renforcent le «&nbsp;frein&nbsp;» du cerveau (le GABA).</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Avec le temps, le cerveau <b>s'habitue</b> : l'effet diminue.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>L'arrêt <b>se prépare dès le début</b>, et se fait <b>progressivement</b>, jamais d'un coup.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Elles ne se ressemblent pas toutes : chacune a <b>son profil</b>.</span></li>
+      </ul>
+      <div class="side">
+        <div class="big"><b>12</b><span>semaines maximum<br>dans l'anxiété<div class="weeks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></span></div>
+        <div class="alertbox"><svg class="ico"><use href="#i-alerte"/></svg><div><b>Alcool = danger</b>Il appuie sur le même frein. Les effets s'additionnent : somnolence, accidents, surdosage.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Antidépresseurs -->
+  <div class="blk" style="--c:var(--amber)">
+    <div class="bt"><span class="disc"><svg class="ico"><use href="#i-neurone"/></svg></span><h2>Les <span>antidépresseurs</span> : ce que je retiens</h2></div>
+    <div class="cols">
+      <ul class="chk">
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Ils agissent sur les <b>messagers du cerveau</b> : sérotonine, noradrénaline, dopamine.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Des <b>effets secondaires au début</b> ? J'en parle à mon médecin <b>avant d'arrêter</b>.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Ça va mieux ? Je <b>continue</b> : l'arrêt se décide avec mon médecin.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span>Il existe <b>plusieurs molécules</b> : le traitement s'ajuste à chacun.</span></li>
+      </ul>
+      <div class="mini">
+        <!-- Courbe simplifiée : délai de 2 à 4 semaines, puis nouveau délai si la dose augmente -->
+        <svg viewBox="0 0 300 132" aria-label="Courbe de l'effet : délai de 2 à 4 semaines, nouveau délai après une augmentation de dose">
+          <rect x="52" y="26" width="62" height="80" rx="6" fill="var(--amber)" opacity=".14"/>
+          <rect x="190" y="26" width="62" height="80" rx="6" fill="var(--amber)" opacity=".14"/>
+          <path d="M8 106 H292" stroke="#C9C3B8" stroke-width="2"/>
+          <path d="M10 102 C35 101 45 97 60 86 S100 62 118 60 L190 60 C205 59 212 52 222 42 S250 34 268 33 L290 33" fill="none" stroke="var(--amber)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="150" y1="26" x2="150" y2="106" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 4" opacity=".6"/>
+          <text x="150" y="17" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)" font-family="inherit">dose augmentée</text>
+          <text x="83" y="126" text-anchor="middle" font-size="16" font-weight="800" fill="var(--amber)" font-family="inherit">2 à 4 sem.</text>
+          <text x="221" y="126" text-anchor="middle" font-size="16" font-weight="800" fill="var(--amber)" font-family="inherit">nouveau délai</text>
+        </svg>
+        <p class="cap">L'effet arrive <b>en 2 à 4 semaines</b>. Si la dose augmente, il faut de nouveau patienter.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Fiche récapitulative · Les médicaments de l'anxiété</span><span><b>Tournez la page&nbsp;→</b>&nbsp;&nbsp;1/2</span></footer>
+</section>
+
+<!-- ███████████████████████████  VERSO  ███████████████████████████ -->
+<section class="page">
+
+  <!-- 4. Autres traitements -->
+  <div>
+    <div class="bt" style="--c:var(--green)"><span class="disc"><svg class="ico"><use href="#i-couches"/></svg></span><h2>Les <span>autres traitements</span> en bref</h2></div>
+    <div class="others">
+      <div class="oc"><span class="disc"><svg class="ico"><use href="#i-horloge"/></svg></span><div><b>Hydroxyzine</b><p>Effet calmant rapide. Plutôt pour un usage ponctuel.</p></div></div>
+      <div class="oc"><span class="disc"><svg class="ico"><use href="#i-coeur"/></svg></span><div><b>Bêta-bloquants</b><p>Calment les signes physiques (cœur qui bat, tremblements), par exemple avant une prise de parole.</p></div></div>
+      <div class="oc"><span class="disc"><svg class="ico"><use href="#i-sablier"/></svg></span><div><b>Buspirone</b><p>Agit en plusieurs semaines. Pas de dépendance.</p></div></div>
+      <div class="oc warn"><span class="disc"><svg class="ico"><use href="#i-onde"/></svg></span><div><b>Prégabaline</b><p><span class="tagw">Vigilance :</span> ordonnance sécurisée, risque de dépendance. Pas d'alcool.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 5. Médicaments + psychothérapie -->
+  <div class="banner"><span class="duoi"><svg class="ico"><use href="#i-gelule"/></svg><em>+</em><svg class="ico"><use href="#i-debat"/></svg></span><p><b>Médicaments et psychothérapie ne s'opposent pas&nbsp;:</b> les médicaments ne remplacent pas la psychothérapie, les deux se complètent.</p></div>
+
+  <!-- 6. Être acteur -->
+  <div>
+    <div class="bt" style="--c:var(--plum)"><span class="disc"><svg class="ico"><use href="#i-acteur"/></svg></span><h2>Être <span>acteur</span> de mon traitement : 4 questions à me poser</h2></div>
+    <div class="qs">
+      <div class="q"><span class="box"></span>Est-ce que je sais pourquoi je prends ce traitement, et pour combien de temps&nbsp;?</div>
+      <div class="q"><span class="box"></span>Si j'ai des effets secondaires au début, dois-je m'inquiéter ou attendre un peu&nbsp;?</div>
+      <div class="q"><span class="box"></span>Si je veux arrêter, en ai-je parlé avec mon médecin, ou est-ce que je le fais seul&nbsp;?</div>
+      <div class="q"><span class="box"></span>Est-ce que je connais les autres options, si celle-ci ne me convient pas&nbsp;?</div>
+    </div>
+  </div>
+
+  <!-- 7. Mon traitement (à remplir) -->
+  <div>
+    <div class="bt" style="--c:var(--plum)"><span class="disc"><svg class="ico"><use href="#i-gelule"/></svg></span><h2>Mon traitement <span>(à remplir)</span></h2></div>
+    <table class="mine">
+      <tr><th style="width:34%">Médicament</th><th style="width:20%">Dose</th><th style="width:20%">Depuis le</th><th>À réévaluer le</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <!-- 8. Réflexes + ressources -->
+  <div class="duo">
+    <div class="reflex">
+      <div class="bt" style="--c:var(--coral);margin-bottom:2.5mm"><span class="disc"><svg class="ico"><use href="#i-alerte"/></svg></span><h2>Mes 3 réflexes</h2></div>
+      <ol>
+        <li>Je ne modifie et n'arrête jamais mon traitement seul.</li>
+        <li>Vigilance avec l'alcool et les psychotropes.</li>
+        <li>Je signale tout effet gênant à mon médecin ou à mon pharmacien.</li>
+      </ol>
+    </div>
+    <div class="res">
+      <div class="bt" style="--c:var(--navy);margin-bottom:0"><span class="disc"><svg class="ico"><use href="#i-arbre"/></svg></span><h2>Pour aller plus loin</h2></div>
+      <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path stroke="#1d2433" d="M0 0.5h7m4 0h3m4 0h7m-25 1h1m5 0h1m1 0h3m5 0h1m1 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h1m1 0h1m5 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m3 0h3m3 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m3 0h1m3 0h1m3 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h3m3 0h2m-16 1h1m5 0h1m1 0h3m2 0h6m2 0h3m-24 1h1m1 0h3m2 0h1m3 0h2m2 0h1m1 0h1m1 0h5m-22 1h1m3 0h1m1 0h4m1 0h1m1 0h1m2 0h1m2 0h1m1 0h2m-25 1h1m2 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1m-25 1h2m2 0h1m1 0h2m1 0h1m4 0h2m2 0h1m5 0h1m-25 1h3m1 0h2m1 0h2m1 0h1m1 0h2m1 0h3m1 0h1m3 0h1m-24 1h1m1 0h3m1 0h2m2 0h1m2 0h4m2 0h3m1 0h2m-25 1h1m2 0h1m5 0h2m1 0h1m1 0h2m1 0h3m1 0h2m1 0h1m-25 1h1m2 0h4m1 0h1m1 0h1m1 0h3m1 0h5m1 0h1m-15 1h1m1 0h1m5 0h1m3 0h1m-21 1h7m2 0h2m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m4 0h1m3 0h2m3 0h1m2 0h1m-24 1h1m1 0h3m1 0h1m2 0h12m1 0h3m-25 1h1m1 0h3m1 0h1m2 0h1m2 0h1m3 0h3m4 0h2m-25 1h1m1 0h3m1 0h1m5 0h2m1 0h2m4 0h2m1 0h1m-25 1h1m5 0h1m2 0h2m1 0h1m3 0h1m1 0h3m3 0h1m-25 1h7m1 0h1m2 0h4m1 0h1m4 0h1m2 0h1"/></svg><div><b>psychotropes.fr</b><span>Une fiche par médicament, avec une partie «&nbsp;fiche patient&nbsp;».</span></div></div>
+      <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33"><path stroke="#1d2433" d="M0 0.5h7m3 0h1m1 0h4m1 0h3m2 0h2m2 0h7m-33 1h1m5 0h1m3 0h2m1 0h3m2 0h1m2 0h4m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m3 0h1m2 0h1m2 0h1m1 0h3m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h3m3 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m1 0h1m3 0h4m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m2 0h1m3 0h6m1 0h1m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-23 1h1m3 0h5m2 0h2m-23 1h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h2m2 0h1m4 0h5m1 0h1m-28 1h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m2 0h2m6 0h4m4 0h1m-32 1h1m1 0h1m2 0h2m1 0h2m1 0h3m3 0h3m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m-32 1h1m3 0h1m2 0h1m2 0h3m2 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m-31 1h1m2 0h1m1 0h1m1 0h1m2 0h1m2 0h3m1 0h4m1 0h4m2 0h1m1 0h1m-27 1h1m1 0h1m1 0h3m1 0h3m2 0h1m3 0h1m1 0h1m1 0h7m-33 1h1m2 0h5m2 0h9m1 0h1m2 0h1m1 0h7m-32 1h1m1 0h1m4 0h1m4 0h1m1 0h1m1 0h3m1 0h4m2 0h1m4 0h1m-31 1h4m1 0h5m2 0h1m1 0h1m1 0h1m2 0h5m1 0h1m1 0h1m2 0h1m-32 1h4m3 0h1m1 0h1m2 0h3m2 0h2m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m-32 1h1m2 0h2m1 0h2m4 0h1m3 0h2m6 0h2m4 0h3m-33 1h1m1 0h1m7 0h4m2 0h1m3 0h2m1 0h3m1 0h1m3 0h1m-30 1h2m1 0h5m4 0h1m2 0h1m3 0h1m1 0h3m-25 1h2m2 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m6 0h3m2 0h4m-33 1h5m1 0h2m1 0h4m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m4 0h2m1 0h1m-32 1h3m1 0h1m1 0h1m3 0h1m1 0h3m4 0h3m1 0h2m3 0h1m-30 1h1m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h2m2 0h2m2 0h5m3 0h1m-25 1h2m7 0h1m1 0h2m1 0h1m1 0h1m3 0h2m2 0h1m-33 1h7m5 0h2m3 0h2m2 0h1m2 0h1m1 0h1m1 0h4m-32 1h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h8m2 0h1m3 0h1m3 0h1m-33 1h1m1 0h3m1 0h1m3 0h4m4 0h2m1 0h2m1 0h6m-30 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h4m3 0h2m2 0h1m1 0h2m-30 1h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h3m1 0h1m-33 1h1m5 0h1m2 0h1m3 0h1m3 0h1m2 0h2m1 0h3m-26 1h7m1 0h1m1 0h2m2 0h2m4 0h2m2 0h2m2 0h1m2 0h1"/></svg><div><b>Revoir la séance</b><span>La présentation, en ligne.</span></div></div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Cette fiche résume la séance et <b>ne remplace pas l'avis de votre médecin</b>.</span><span>Dr Nathan Mitelman · Psychiatre&nbsp;&nbsp;2/2</span></footer>
+</section>
+
+</body>
+</html>
